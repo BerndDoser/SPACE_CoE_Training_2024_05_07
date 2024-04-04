@@ -1,0 +1,37 @@
+---
+title: Spherinator & Hipster
+author: Bernd Doser
+date: 2024/05/07
+date-format: "MMMM YYYY"
+institute: "[HITS gGmbH](https://h-its.org)"
+format:
+  pptx:
+    reference-doc: template.pptx
+  revealjs:
+    logo: images/HITS_RGB_eng.jpg
+    footer: "Spherinator & Hipster (B. Doser)"
+    slide-number: true
+    highlight-style: a11y
+---
+
+## Agenda
+
+- Development environment
+- Spherinator: Model training
+- Hipster: Inference
+
+## Python environment
+
+- Python dependency management with `Poetry`
+
+- Automated dependancy updates with `Dependabot`
+  - Pull request for each update
+
+## Model training
+
+- PyTorch Lightning
+
+- Monitoring with `Weights & Biases`
+  - Sharing results, reports and models within resarch group
+
+## Model
