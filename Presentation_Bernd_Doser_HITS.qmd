@@ -5,13 +5,13 @@ date: 2024/05/07
 date-format: "MMMM YYYY"
 institute: "[HITS gGmbH](https://h-its.org)"
 format:
-  pptx:
-    reference-doc: template.pptx
   revealjs:
     logo: images/HITS_RGB_eng.jpg
     footer: "Spherinator & Hipster (B. Doser)"
     slide-number: true
     highlight-style: a11y
+  pptx:
+    reference-doc: template.pptx
 ---
 
 ## Agenda
@@ -34,4 +34,53 @@ format:
 - Monitoring with `Weights & Biases`
   - Sharing results, reports and models within resarch group
 
-## Model
+## PyTorch Lightning CLI
+
+- Complete experiment is defined in a single yaml file
+
+```yaml
+seed_everything: 42
+
+model:
+  class_path: models.RotationalVariationalAutoencoderPower
+  init_args:
+    h_dim: 256
+    z_dim: 3
+    image_size: 363
+    rotations: 36
+    beta: 1.0e-3
+
+data:
+  class_path: data.IllustrisSdssDataModule
+  init_args:
+    data_directories: ["TNG100/sdss/snapnum_099/data/",
+                       "TNG50/sdss/snapnum_099/data/",
+                       "Illustris/sdss/snapnum_135/data/",]
+    extension: fits
+    minsize: 100
+    batch_size: 512
+    shuffle: True
+    num_workers: 16
+
+optimizer:
+  class_path: torch.optim.Adam
+  init_args:
+    lr: 0.001
+
+lr_scheduler:
+  class_path: lightning.pytorch.cli.ReduceLROnPlateau
+  init_args:
+    mode: min
+    factor: 0.1
+    patience: 5
+    cooldown: 5
+    min_lr: 1.e-5
+    monitor: train_loss
+    verbose: True
+
+trainer:
+  max_epochs: 200
+  accelerator: gpu
+  devices: 4
+  precision: 32
+```
