@@ -1,38 +1,60 @@
 ---
-title: Spherinator & Hipster
+title: Spherinator & HiPSter
 author: Bernd Doser
 date: 2024/05/07
 date-format: "MMMM YYYY"
 institute: "[HITS gGmbH](https://h-its.org)"
+title-slide-attributes:
+  data-background-image: images/SPACE_title_slide.png
+  data-background-size: contain
 format:
   revealjs:
     logo: images/HITS_RGB_eng.jpg
-    footer: "Spherinator & Hipster (B. Doser)"
+    footer: "Spherinator & HiPSter (B. Doser)"
     slide-number: true
     highlight-style: a11y
+    bibliography: references.bib
   pptx:
-    reference-doc: template.pptx
+    reference-doc: Space_template_v04_20240216.pptx
 ---
 
 ## Agenda
 
 - Development environment
 - Spherinator: Model training
-- Hipster: Inference
+- Lightning CLI
+- HiPSter: Inference
 
-## Python environment
 
+## Development Environment
+
+- Open source at GitHub
 - Python dependency management with `Poetry`
-
-- Automated dependancy updates with `Dependabot`
+- Automated dependency updates with `Dependabot`
   - Pull request for each update
 
-## Model training
+
+## Model Training
 
 - PyTorch Lightning
-
-- Monitoring with `Weights & Biases`
+- Monitoring with `Weights&Biases`
   - Sharing results, reports and models within resarch group
+
+
+## Spherinator: Euclidean vs (Hyper-)spherical
+
+Euclidean latent spaces -> Gaussian reference distribution
+
+Hyperspherical latent spaces [@DeCao2020] -> Uniform reference distribution
+
+Kullback-Leibler divergence
+
+$$\begin{aligned}
+L = L_{recon} + \lambda \cdot L_{KL}
+\end{aligned}$$
+
+For visualization dim = 3 -> 
+
 
 ## PyTorch Lightning CLI
 
@@ -42,14 +64,33 @@ format:
 {{< include _illustris_power_simplified.yaml >}}
 ```
 
-## Hipster
+
+## Spherinator: Step by Step
+
+- Clone repository
+```
+git clone https://github.com/HITS-AIN/Spherinator.git [--branch v0.2]
+```
+- Install all dependencies and change into virtual environment
+```
+poetry install
+poetry shell
+```
+- Start training with 
+```
+spherinator.py fit -c config.yaml
+```
+
+
+## HiPSter Workflow
 
 - Python workflow for inference
-  - generate_hips(model)
-  - generate_catalog(model, datamodule)
-  - transform_csv_to_votable()
-  - generate_dataset_projection(datamodule)
-  - create_images(datamodule)
-  - create_thumbnails(datamodule)
-  - create_allsky()
+![](images/HiPSter.drawio.svg)
 
+
+## Acknowledgement & Disclaimer
+
+![](images/SPACE_acknowledgement_cutout.png){.nostretch width="1050"}
+
+
+## References

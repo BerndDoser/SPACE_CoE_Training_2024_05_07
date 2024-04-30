@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Bernd Doser">
-  <title>Spherinator &amp; Hipster</title>
+  <title>Spherinator &amp; HiPSter</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -94,7 +94,27 @@
     code span.va { color: #a55a00; } /* Variable */
     code span.vs { color: #008000; } /* VerbatimString */
     code span.wa { color: #696969; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="Presentation_Bernd_Doser_HITS_files/libs/revealjs/dist/theme/quarto.css">
   <link href="Presentation_Bernd_Doser_HITS_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Presentation_Bernd_Doser_HITS_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -390,8 +410,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Spherinator &amp; Hipster</h1>
+<section id="title-slide" data-background-image="images/SPACE_title_slide.png" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">Spherinator &amp; HiPSter</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -411,104 +431,130 @@ Bernd Doser
 <ul>
 <li>Development environment</li>
 <li>Spherinator: Model training</li>
-<li>Hipster: Inference</li>
+<li>Lightning CLI</li>
+<li>HiPSter: Inference</li>
 </ul>
 </section>
-<section id="python-environment" class="slide level2">
-<h2>Python environment</h2>
+<section id="development-environment" class="slide level2">
+<h2>Development Environment</h2>
 <ul>
-<li><p>Python dependency management with <code>Poetry</code></p></li>
-<li><p>Automated dependancy updates with <code>Dependabot</code></p>
+<li>Open source at GitHub</li>
+<li>Python dependency management with <code>Poetry</code></li>
+<li>Automated dependency updates with <code>Dependabot</code>
 <ul>
 <li>Pull request for each update</li>
 </ul></li>
 </ul>
 </section>
 <section id="model-training" class="slide level2">
-<h2>Model training</h2>
+<h2>Model Training</h2>
 <ul>
-<li><p>PyTorch Lightning</p></li>
-<li><p>Monitoring with <code>Weights &amp; Biases</code></p>
+<li>PyTorch Lightning</li>
+<li>Monitoring with <code>Weights&amp;Biases</code>
 <ul>
 <li>Sharing results, reports and models within resarch group</li>
 </ul></li>
 </ul>
 </section>
+<section id="spherinator-euclidean-vs-hyper-spherical" class="slide level2">
+<h2>Spherinator: Euclidean vs (Hyper-)spherical</h2>
+<p>Euclidean latent spaces -&gt; Gaussian reference distribution</p>
+<p>Hyperspherical latent spaces <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span> -&gt; Uniform reference distribution</p>
+<p>Kullback-Leibler divergence</p>
+<p><span class="math display">\[\begin{aligned}
+L = L_{recon} + \lambda \cdot L_{KL}
+\end{aligned}\]</span></p>
+<p>For visualization dim = 3 -&gt;</p>
+</section>
 <section id="pytorch-lightning-cli" class="slide level2">
 <h2>PyTorch Lightning CLI</h2>
 <ul>
-<li>Complete experiment is defined in a single yaml file</li>
+<li>ML training (experiment) defined in a single yaml file</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href=""></a><span class="fu">seed_everything</span><span class="kw">:</span><span class="at"> </span><span class="dv">42</span></span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a><span class="fu">model</span><span class="kw">:</span></span>
 <span id="cb1-4"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> models.RotationalVariationalAutoencoderPower</span></span>
 <span id="cb1-5"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
-<span id="cb1-6"><a href=""></a><span class="at">    </span><span class="fu">h_dim</span><span class="kw">:</span><span class="at"> </span><span class="dv">256</span></span>
-<span id="cb1-7"><a href=""></a><span class="at">    </span><span class="fu">z_dim</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb1-8"><a href=""></a><span class="at">    </span><span class="fu">image_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">363</span></span>
-<span id="cb1-9"><a href=""></a><span class="at">    </span><span class="fu">rotations</span><span class="kw">:</span><span class="at"> </span><span class="dv">36</span></span>
-<span id="cb1-10"><a href=""></a><span class="at">    </span><span class="fu">beta</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0e-3</span></span>
-<span id="cb1-11"><a href=""></a></span>
-<span id="cb1-12"><a href=""></a><span class="fu">data</span><span class="kw">:</span></span>
-<span id="cb1-13"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> data.IllustrisSdssDataModule</span></span>
-<span id="cb1-14"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
-<span id="cb1-15"><a href=""></a><span class="at">    </span><span class="fu">data_directories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"TNG100"</span><span class="kw">,</span><span class="at"> </span><span class="st">"TNG50"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Illustris"</span><span class="kw">]</span></span>
-<span id="cb1-16"><a href=""></a><span class="at">    </span><span class="fu">extension</span><span class="kw">:</span><span class="at"> fits</span></span>
-<span id="cb1-17"><a href=""></a><span class="at">    </span><span class="fu">minsize</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span>
-<span id="cb1-18"><a href=""></a><span class="at">    </span><span class="fu">batch_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">512</span></span>
-<span id="cb1-19"><a href=""></a><span class="at">    </span><span class="fu">shuffle</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
-<span id="cb1-20"><a href=""></a><span class="at">    </span><span class="fu">num_workers</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
-<span id="cb1-21"><a href=""></a></span>
-<span id="cb1-22"><a href=""></a><span class="fu">optimizer</span><span class="kw">:</span></span>
-<span id="cb1-23"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> torch.optim.Adam</span></span>
-<span id="cb1-24"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
-<span id="cb1-25"><a href=""></a><span class="at">    </span><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.001</span></span>
-<span id="cb1-26"><a href=""></a></span>
-<span id="cb1-27"><a href=""></a><span class="fu">lr_scheduler</span><span class="kw">:</span></span>
-<span id="cb1-28"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> lightning.pytorch.cli.ReduceLROnPlateau</span></span>
-<span id="cb1-29"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
-<span id="cb1-30"><a href=""></a><span class="at">    </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> min</span></span>
-<span id="cb1-31"><a href=""></a><span class="at">    </span><span class="fu">factor</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.1</span></span>
-<span id="cb1-32"><a href=""></a><span class="at">    </span><span class="fu">patience</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
-<span id="cb1-33"><a href=""></a><span class="at">    </span><span class="fu">cooldown</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
-<span id="cb1-34"><a href=""></a><span class="at">    </span><span class="fu">min_lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.e-5</span></span>
-<span id="cb1-35"><a href=""></a><span class="at">    </span><span class="fu">monitor</span><span class="kw">:</span><span class="at"> train_loss</span></span>
-<span id="cb1-36"><a href=""></a><span class="at">    </span><span class="fu">verbose</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
-<span id="cb1-37"><a href=""></a></span>
-<span id="cb1-38"><a href=""></a><span class="fu">trainer</span><span class="kw">:</span></span>
-<span id="cb1-39"><a href=""></a><span class="at">  </span><span class="fu">max_epochs</span><span class="kw">:</span><span class="at"> </span><span class="dv">200</span></span>
-<span id="cb1-40"><a href=""></a><span class="at">  </span><span class="fu">accelerator</span><span class="kw">:</span><span class="at"> gpu</span></span>
-<span id="cb1-41"><a href=""></a><span class="at">  </span><span class="fu">devices</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
-<span id="cb1-42"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href=""></a><span class="at">    </span><span class="fu">encoder</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href=""></a><span class="at">      </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> models.ConvolutionalEncoder</span></span>
+<span id="cb1-8"><a href=""></a><span class="at">    </span><span class="fu">decoder</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href=""></a><span class="at">      </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> models.ConvolutionalDecoder</span></span>
+<span id="cb1-10"><a href=""></a><span class="at">    </span><span class="fu">h_dim</span><span class="kw">:</span><span class="at"> </span><span class="dv">256</span></span>
+<span id="cb1-11"><a href=""></a><span class="at">    </span><span class="fu">z_dim</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb1-12"><a href=""></a><span class="at">    </span><span class="fu">image_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">363</span></span>
+<span id="cb1-13"><a href=""></a><span class="at">    </span><span class="fu">rotations</span><span class="kw">:</span><span class="at"> </span><span class="dv">36</span></span>
+<span id="cb1-14"><a href=""></a><span class="at">    </span><span class="fu">beta</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0e-3</span></span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a><span class="fu">data</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> data.IllustrisSdssDataModule</span></span>
+<span id="cb1-18"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-19"><a href=""></a><span class="at">    </span><span class="fu">data_directories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"TNG100"</span><span class="kw">,</span><span class="at"> </span><span class="st">"TNG50"</span><span class="kw">,</span><span class="at"> </span><span class="st">"Illustris"</span><span class="kw">]</span></span>
+<span id="cb1-20"><a href=""></a><span class="at">    </span><span class="fu">extension</span><span class="kw">:</span><span class="at"> fits</span></span>
+<span id="cb1-21"><a href=""></a><span class="at">    </span><span class="fu">minsize</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span>
+<span id="cb1-22"><a href=""></a><span class="at">    </span><span class="fu">batch_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">512</span></span>
+<span id="cb1-23"><a href=""></a><span class="at">    </span><span class="fu">shuffle</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
+<span id="cb1-24"><a href=""></a><span class="at">    </span><span class="fu">num_workers</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
+<span id="cb1-25"><a href=""></a></span>
+<span id="cb1-26"><a href=""></a><span class="fu">optimizer</span><span class="kw">:</span></span>
+<span id="cb1-27"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> torch.optim.Adam</span></span>
+<span id="cb1-28"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-29"><a href=""></a><span class="at">    </span><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.001</span></span>
+<span id="cb1-30"><a href=""></a></span>
+<span id="cb1-31"><a href=""></a><span class="fu">lr_scheduler</span><span class="kw">:</span></span>
+<span id="cb1-32"><a href=""></a><span class="at">  </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> lightning.pytorch.cli.ReduceLROnPlateau</span></span>
+<span id="cb1-33"><a href=""></a><span class="at">  </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-34"><a href=""></a><span class="at">    </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> min</span></span>
+<span id="cb1-35"><a href=""></a><span class="at">    </span><span class="fu">factor</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.1</span></span>
+<span id="cb1-36"><a href=""></a><span class="at">    </span><span class="fu">patience</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb1-37"><a href=""></a><span class="at">    </span><span class="fu">cooldown</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb1-38"><a href=""></a><span class="at">    </span><span class="fu">min_lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.e-5</span></span>
+<span id="cb1-39"><a href=""></a><span class="at">    </span><span class="fu">monitor</span><span class="kw">:</span><span class="at"> train_loss</span></span>
+<span id="cb1-40"><a href=""></a><span class="at">    </span><span class="fu">verbose</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
+<span id="cb1-41"><a href=""></a></span>
+<span id="cb1-42"><a href=""></a><span class="fu">trainer</span><span class="kw">:</span></span>
+<span id="cb1-43"><a href=""></a><span class="at">  </span><span class="fu">max_epochs</span><span class="kw">:</span><span class="at"> </span><span class="dv">200</span></span>
+<span id="cb1-44"><a href=""></a><span class="at">  </span><span class="fu">accelerator</span><span class="kw">:</span><span class="at"> gpu</span></span>
+<span id="cb1-45"><a href=""></a><span class="at">  </span><span class="fu">devices</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb1-46"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="hipster" class="slide level2">
-<h2>Hipster</h2>
+<section id="spherinator-step-by-step" class="slide level2">
+<h2>Spherinator: Step by Step</h2>
 <ul>
-<li>Python workflow for inference
-<ul>
-<li>generate_hips(model)</li>
-<li>generate_catalog(model, datamodule)</li>
-<li>transform_csv_to_votable()</li>
-<li>generate_dataset_projection(datamodule)</li>
-<li>create_images(datamodule)</li>
-<li>create_thumbnails(datamodule)</li>
-<li>create_allsky()</li>
-</ul></li>
+<li>Clone repository</li>
 </ul>
-<!-- ## Python Test
-
-
-import numpy as np
-
-a = np.array([1, 2, 3])
-print(a)
-
-``` -->
+<pre><code>git clone https://github.com/HITS-AIN/Spherinator.git [--branch v0.2]</code></pre>
+<ul>
+<li>Install all dependencies and change into virtual environment</li>
+</ul>
+<pre><code>poetry install
+poetry shell</code></pre>
+<ul>
+<li>Start training with</li>
+</ul>
+<pre><code>spherinator.py fit -c config.yaml</code></pre>
+</section>
+<section id="hipster-workflow" class="slide level2">
+<h2>HiPSter Workflow</h2>
+<ul>
+<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg"></li>
+</ul>
+</section>
+<section id="acknowledgement-disclaimer" class="slide level2">
+<h2>Acknowledgement &amp; Disclaimer</h2>
+<p><img data-src="images/SPACE_acknowledgement_cutout.png" class="" width="1050"></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 <div class="quarto-auto-generated-content">
 <p><img src="images/HITS_RGB_eng.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Spherinator &amp; Hipster (B. Doser)</p>
+<p>Spherinator &amp; HiPSter (B. Doser)</p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-DeCao2020" class="csl-entry" role="listitem">
+Cao, Nicola De, and Wilker Aziz. 2020. <span>“The Power Spherical Distribution.”</span> <em>Proceedings of the 37th International Conference on Machine Learning, INNF+</em>, June. <a href="http://arxiv.org/abs/2006.04437">http://arxiv.org/abs/2006.04437</a>.
 </div>
 </div>
 </section>
