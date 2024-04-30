@@ -3,6 +3,10 @@ seed_everything: 42
 model:
   class_path: models.RotationalVariationalAutoencoderPower
   init_args:
+    encoder:
+      class_path: models.ConvolutionalEncoder
+    decoder:
+      class_path: models.ConvolutionalDecoder
     h_dim: 256
     z_dim: 3
     image_size: 363
