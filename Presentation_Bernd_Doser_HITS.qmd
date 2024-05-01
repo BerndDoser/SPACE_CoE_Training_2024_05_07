@@ -1,10 +1,10 @@
 ---
 title: Spherinator & HiPSter
-author: Bernd Doser
+subtitle: SPACE Training Webinar
+author: Bernd Doser (HITS)
 date: 2024/05/07
 date-format: "MMMM YYYY"
 # institute: "[HITS gGmbH](https://h-its.org)"
-institute: HITS gGmbH
 title-slide-attributes:
   data-background-image: images/SPACE_title_slide.png
 format:
