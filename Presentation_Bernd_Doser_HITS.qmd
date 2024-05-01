@@ -3,10 +3,10 @@ title: Spherinator & HiPSter
 author: Bernd Doser
 date: 2024/05/07
 date-format: "MMMM YYYY"
-institute: "[HITS gGmbH](https://h-its.org)"
+# institute: "[HITS gGmbH](https://h-its.org)"
+institute: HITS gGmbH
 title-slide-attributes:
   data-background-image: images/SPACE_title_slide.png
-  # data-background-size: contain
 format:
   revealjs:
     logo: images/HITS_RGB_eng.jpg
@@ -15,6 +15,8 @@ format:
     highlight-style: a11y
     bibliography: references.bib
     width: 1300
+    template-partials:
+      - title-slide.html
   pptx:
     reference-doc: Space_template_v04_20240216.pptx
 ---
