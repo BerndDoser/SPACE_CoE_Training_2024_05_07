@@ -6,7 +6,7 @@ date-format: "MMMM YYYY"
 institute: "[HITS gGmbH](https://h-its.org)"
 title-slide-attributes:
   data-background-image: images/SPACE_title_slide.png
-  data-background-size: contain
+  # data-background-size: contain
 format:
   revealjs:
     logo: images/HITS_RGB_eng.jpg
@@ -14,6 +14,7 @@ format:
     slide-number: true
     highlight-style: a11y
     bibliography: references.bib
+    width: 1300
   pptx:
     reference-doc: Space_template_v04_20240216.pptx
 ---
@@ -94,8 +95,7 @@ Source: [@DeCao2020]
 
 ## PyTorch Lightning
 
-- Command line interface (CLI)
-- Experiments defined in yaml file(s)
+Experiments defined in yaml file:
 
 ```yaml
 {{< include _illustris_power_simplified.yaml >}}
@@ -132,7 +132,7 @@ Source: [@Fernique_2015]
 ## HiPSter Workflow {.nostretch}
 
 - Python workflow for inference
-![](images/HiPSter.drawio.svg){width="900"}
+![](images/HiPSter.drawio.svg){.absolute left=0 width=1800}
 
 
 ## Summary and Outlook
@@ -145,7 +145,7 @@ Source: [@Fernique_2015]
 
 ## Acknowledgement & Disclaimer
 
-![](images/SPACE_acknowledgement_cutout.png){.nostretch width="1050"}
+![](images/SPACE_acknowledgement_cutout.png){.nostretch width=1800}
 
 
 ## References

@@ -410,7 +410,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/SPACE_title_slide.png" data-background-size="contain" class="quarto-title-block center">
+<section id="title-slide" data-background-image="images/SPACE_title_slide.png" class="quarto-title-block center">
   <h1 class="title">Spherinator &amp; HiPSter</h1>
 
 <div class="quarto-title-authors">
@@ -484,8 +484,8 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 </ul></li>
 </ul>
 </section>
-<section id="wb-ai-developer-platform" class="slide level2">
-<h2>W&amp;B: AI Developer Platform</h2>
+<section id="weightsbiases-ai-developer-platform" class="slide level2">
+<h2>Weights&amp;Biases: AI Developer Platform</h2>
 <ul>
 <li>Free for academic research</li>
 <li>Tracking experiments</li>
@@ -494,11 +494,9 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 <li>Hyperparameter optimization</li>
 </ul>
 </section>
-<section id="pytorch-lightning-cli" class="slide level2">
-<h2>PyTorch Lightning CLI</h2>
-<ul>
-<li>ML training (experiment) defined in a single yaml file</li>
-</ul>
+<section id="pytorch-lightning" class="slide level2">
+<h2>PyTorch Lightning</h2>
+<p>Experiments defined in yaml file:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href=""></a><span class="fu">seed_everything</span><span class="kw">:</span><span class="at"> </span><span class="dv">42</span></span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a><span class="fu">model</span><span class="kw">:</span></span>
@@ -573,7 +571,7 @@ poetry shell</code></pre>
 <section id="hipster-workflow" class="slide level2 nostretch">
 <h2>HiPSter Workflow</h2>
 <ul>
-<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg" width="900"></li>
+<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg" class="absolute" style="left: 0px; width: 1800px; "></li>
 </ul>
 </section>
 <section id="summary-and-outlook" class="slide level2">
@@ -581,13 +579,13 @@ poetry shell</code></pre>
 <ul>
 <li>First Prototyp public available (space.h-its.org)</li>
 <li>Evaluate Encoder, Decoder, Loss function</li>
-<li>Evaluation of ML workflow solutions</li>
-<li></li>
+<li>Machine learning workflow</li>
+<li>Learning of point clouds instead of images</li>
 </ul>
 </section>
 <section id="acknowledgement-disclaimer" class="slide level2">
 <h2>Acknowledgement &amp; Disclaimer</h2>
-<p><img data-src="images/SPACE_acknowledgement_cutout.png" class="" width="1050"></p>
+<p><img data-src="images/SPACE_acknowledgement_cutout.png" class="" width="1800"></p>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -782,7 +780,7 @@ Fernique, P., M. G. Allen, T. Boch, A. Oberto, F-X. Pineau, D. Durand, C. Bot, e
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1300,
 
         height: 700,
 
