@@ -18,27 +18,14 @@ format:
     reference-doc: Space_template_v04_20240216.pptx
 ---
 
-## Agenda
+## Outline
 
-- Development environment
+- Spherinator: The Model
 - Spherinator: Model training
-- Lightning CLI
-- HiPSter: Inference
-
-
-## Development Environment
-
-- Open source at GitHub
-- Python dependency management with `Poetry`
-- Automated dependency updates with `Dependabot`
-  - Pull request for each update
-
-
-## Model Training
-
-- PyTorch Lightning
-- Monitoring with `Weights&Biases`
-  - Sharing results, reports and models within resarch group
+  - Development environment
+  - Lightning CLI
+- HiPSter: The Inference
+- Summary and Outlook
 
 
 ## Spherinator: Euclidean vs (Hyper-)spherical
@@ -47,18 +34,68 @@ Euclidean latent spaces -> Gaussian reference distribution
 
 Hyperspherical latent spaces [@DeCao2020] -> Uniform reference distribution
 
-Kullback-Leibler divergence
+Kullback-Leibler divergence (KL)
 
 $$\begin{aligned}
 L = L_{recon} + \lambda \cdot L_{KL}
 \end{aligned}$$
 
-For visualization dim = 3 -> 
+
+## Power Spherical Distribution
+
+$$\begin{aligned}
+p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
+\end{aligned}$$
 
 
-## PyTorch Lightning CLI
+:::: {.columns}
 
-- ML training (experiment) defined in a single yaml file
+::: {.column width="40%"}
+$d$: dimension
+
+$\mu$: direction
+
+$\kappa$: concentration
+
+$N_{X}$: normalization factor
+:::
+
+::: {.column width="60%"}
+![](images/power_spherical.png)
+:::
+
+::::
+
+::: aside
+Source: [@DeCao2020]
+:::
+
+
+## Development Environment
+
+- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
+- Python dependency management with [Poetry]()
+- Automated dependency updates with [Dependabot]()
+  - Pull request (PR) for each update
+- Continuous integration with [GitHub Action](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml)
+  - Static code analysis
+  - Unit tests
+  - PR: Check before merge
+
+
+## Weights&Biases: AI Developer Platform
+
+- Free for academic research
+- Tracking experiments
+- Collaborative project management (teams, reports) 
+- Model registry (publish for production)
+- Hyperparameter optimization
+
+
+## PyTorch Lightning
+
+- Command line interface (CLI)
+- Experiments defined in yaml file(s)
 
 ```yaml
 {{< include _illustris_power_simplified.yaml >}}
@@ -81,11 +118,29 @@ poetry shell
 spherinator.py fit -c config.yaml
 ```
 
+## Visualization with Aladin(-Lite) {.nostretch}
 
-## HiPSter Workflow
+HiPS - Hierarchical Progressive Survey
+
+![](images/HEALPix.png){width="900"}
+
+::: aside
+Source: [@Fernique_2015]
+:::
+
+
+## HiPSter Workflow {.nostretch}
 
 - Python workflow for inference
-![](images/HiPSter.drawio.svg)
+![](images/HiPSter.drawio.svg){width="900"}
+
+
+## Summary and Outlook
+
+- First Prototyp public available (space.h-its.org)
+- Evaluate Encoder, Decoder, Loss function
+- Machine learning workflow
+- Learning of point clouds instead of images
 
 
 ## Acknowledgement & Disclaimer

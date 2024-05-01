@@ -426,45 +426,73 @@ Bernd Doser
 
   <p class="date">May 2024</p>
 </section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ul>
+<li>Spherinator: The Model</li>
+<li>Spherinator: Model training
 <ul>
 <li>Development environment</li>
-<li>Spherinator: Model training</li>
 <li>Lightning CLI</li>
-<li>HiPSter: Inference</li>
-</ul>
-</section>
-<section id="development-environment" class="slide level2">
-<h2>Development Environment</h2>
-<ul>
-<li>Open source at GitHub</li>
-<li>Python dependency management with <code>Poetry</code></li>
-<li>Automated dependency updates with <code>Dependabot</code>
-<ul>
-<li>Pull request for each update</li>
 </ul></li>
-</ul>
-</section>
-<section id="model-training" class="slide level2">
-<h2>Model Training</h2>
-<ul>
-<li>PyTorch Lightning</li>
-<li>Monitoring with <code>Weights&amp;Biases</code>
-<ul>
-<li>Sharing results, reports and models within resarch group</li>
-</ul></li>
+<li>HiPSter: The Inference</li>
+<li>Summary and Outlook</li>
 </ul>
 </section>
 <section id="spherinator-euclidean-vs-hyper-spherical" class="slide level2">
 <h2>Spherinator: Euclidean vs (Hyper-)spherical</h2>
 <p>Euclidean latent spaces -&gt; Gaussian reference distribution</p>
 <p>Hyperspherical latent spaces <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span> -&gt; Uniform reference distribution</p>
-<p>Kullback-Leibler divergence</p>
+<p>Kullback-Leibler divergence (KL)</p>
 <p><span class="math display">\[\begin{aligned}
 L = L_{recon} + \lambda \cdot L_{KL}
 \end{aligned}\]</span></p>
-<p>For visualization dim = 3 -&gt;</p>
+</section>
+<section id="power-spherical-distribution" class="slide level2">
+<h2>Power Spherical Distribution</h2>
+<p><span class="math display">\[\begin{aligned}
+p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
+\end{aligned}\]</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(d\)</span>: dimension</p>
+<p><span class="math inline">\(\mu\)</span>: direction</p>
+<p><span class="math inline">\(\kappa\)</span>: concentration</p>
+<p><span class="math inline">\(N_{X}\)</span>: normalization factor</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="images/power_spherical.png"></p>
+</div>
+</div>
+
+<aside><div>
+<p>Source: <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span></p>
+</div></aside></section>
+<section id="development-environment" class="slide level2">
+<h2>Development Environment</h2>
+<ul>
+<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a></li>
+<li>Python dependency management with <a href="">Poetry</a></li>
+<li>Automated dependency updates with <a href="">Dependabot</a>
+<ul>
+<li>Pull request (PR) for each update</li>
+</ul></li>
+<li>Continuous integration with <a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Action</a>
+<ul>
+<li>Static code analysis</li>
+<li>Unit tests</li>
+<li>PR: Check before merge</li>
+</ul></li>
+</ul>
+</section>
+<section id="wb-ai-developer-platform" class="slide level2">
+<h2>W&amp;B: AI Developer Platform</h2>
+<ul>
+<li>Free for academic research</li>
+<li>Tracking experiments</li>
+<li>Collaborative project management (teams, reports)</li>
+<li>Model registry (publish for production)</li>
+<li>Hyperparameter optimization</li>
+</ul>
 </section>
 <section id="pytorch-lightning-cli" class="slide level2">
 <h2>PyTorch Lightning CLI</h2>
@@ -534,10 +562,27 @@ poetry shell</code></pre>
 </ul>
 <pre><code>spherinator.py fit -c config.yaml</code></pre>
 </section>
-<section id="hipster-workflow" class="slide level2">
+<section id="visualization-with-aladin-lite" class="slide level2 nostretch">
+<h2>Visualization with Aladin(-Lite)</h2>
+<p>HiPS - Hierarchical Progressive Survey</p>
+<p><img data-src="images/HEALPix.png" width="900"></p>
+
+<aside><div>
+<p>Source: <span class="citation" data-cites="Fernique_2015">(<a href="#/references" role="doc-biblioref" onclick="">Fernique et al. 2015</a>)</span></p>
+</div></aside></section>
+<section id="hipster-workflow" class="slide level2 nostretch">
 <h2>HiPSter Workflow</h2>
 <ul>
-<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg"></li>
+<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg" width="900"></li>
+</ul>
+</section>
+<section id="summary-and-outlook" class="slide level2">
+<h2>Summary and Outlook</h2>
+<ul>
+<li>First Prototyp public available (space.h-its.org)</li>
+<li>Evaluate Encoder, Decoder, Loss function</li>
+<li>Evaluation of ML workflow solutions</li>
+<li></li>
 </ul>
 </section>
 <section id="acknowledgement-disclaimer" class="slide level2">
@@ -555,6 +600,9 @@ poetry shell</code></pre>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-DeCao2020" class="csl-entry" role="listitem">
 Cao, Nicola De, and Wilker Aziz. 2020. <span>“The Power Spherical Distribution.”</span> <em>Proceedings of the 37th International Conference on Machine Learning, INNF+</em>, June. <a href="http://arxiv.org/abs/2006.04437">http://arxiv.org/abs/2006.04437</a>.
+</div>
+<div id="ref-Fernique_2015" class="csl-entry" role="listitem">
+Fernique, P., M. G. Allen, T. Boch, A. Oberto, F-X. Pineau, D. Durand, C. Bot, et al. 2015. <span>“Hierarchical Progressive Surveys: Multi-Resolution HEALPix Data Structures for Astronomical Images, Catalogues, and 3-Dimensional Data Cubes.”</span> <em>Astronomy &amp;Amp; Astrophysics</em> 578 (June): A114. <a href="https://doi.org/10.1051/0004-6361/201526075">https://doi.org/10.1051/0004-6361/201526075</a>.
 </div>
 </div>
 </section>
