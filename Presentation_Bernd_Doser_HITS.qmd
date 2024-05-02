@@ -21,7 +21,7 @@ format:
     reference-doc: Space_template_v04_20240216.pptx
 ---
 
-## Outline
+## Outline {background-image="images/aladin-lite-background.png"}
 
 - Spherinator: The Model
 - Spherinator: Model training
@@ -88,11 +88,13 @@ Source: [@DeCao2020]
 
 ## Weights&Biases: AI Developer Platform
 
-- Free for academic research
 - Tracking experiments
+![](images/wandb_illustris_loss.png)
 - Collaborative project management (teams, reports) 
 - Model registry (publish for production)
 - Hyperparameter optimization
+- Free for academic research
+
 
 
 ## PyTorch Lightning
@@ -139,15 +141,14 @@ Source: [@Fernique_2015]
 
 ## Summary and Outlook
 
-- First Prototyp public available (space.h-its.org)
-- Evaluate Encoder, Decoder, Loss function
-- Machine learning workflow
-- Learning of point clouds instead of images
+- Prototyp public available [space.h-its.org](https://space.h-its.org)
+- Evaluation of Encoder, Decoder, Loss function to improve 
+- Orchestration of the ML and HiPSter workflow
+- Learning of 3D point clouds instead of 2D images
+- Conversion of the trained model into [ONNX standard]()
 
 
-## Acknowledgement & Disclaimer
-
-![](images/SPACE_acknowledgement_cutout.png){.nostretch width=1800}
+## Acknowledgement & Disclaimer {background-image="images/SPACE_acknowledgement_background.png"}
 
 
 ## References
