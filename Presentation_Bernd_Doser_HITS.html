@@ -429,14 +429,14 @@
 <li>Summary and Outlook</li>
 </ul>
 </section>
-<section id="spherinator-euclidean-vs-hyper-spherical" class="slide level2">
-<h2>Spherinator: Euclidean vs (Hyper-)spherical</h2>
-<p>Euclidean latent spaces -&gt; Gaussian reference distribution</p>
-<p>Hyperspherical latent spaces <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span> -&gt; Uniform reference distribution</p>
-<p>Kullback-Leibler divergence (KL)</p>
-<p><span class="math display">\[\begin{aligned}
-L = L_{recon} + \lambda \cdot L_{KL}
-\end{aligned}\]</span></p>
+<section id="spherinator-hyper-spherical-vae" class="slide level2">
+<h2>Spherinator: (Hyper-)spherical VAE</h2>
+<ul>
+<li>Representation learning by <strong>dimensionality reduction</strong></li>
+<li><strong>Convolutional Variational Autoencoder</strong> (VAE) <img data-src="images/vae.png" class="center"></li>
+<li><strong>Rotational invariance</strong> by using set of rotated images, where only the one with the lowest reconstruction loss is used for the training</li>
+<li><strong>(Hyper-)spherical</strong> latent space</li>
+</ul>
 </section>
 <section id="power-spherical-distribution" class="slide level2">
 <h2>Power Spherical Distribution</h2>
@@ -445,10 +445,10 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 \end{aligned}\]</span></p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><span class="math inline">\(d\)</span>: dimension</p>
-<p><span class="math inline">\(\mu\)</span>: direction</p>
-<p><span class="math inline">\(\kappa\)</span>: concentration</p>
-<p><span class="math inline">\(N_{X}\)</span>: normalization factor</p>
+<p><span class="math inline">\(d\)</span>: Dimension</p>
+<p><span class="math inline">\(\mu\)</span>: Direction</p>
+<p><span class="math inline">\(\kappa\)</span>: Concentration</p>
+<p><span class="math inline">\(N_{X}\)</span>: Normalization factor</p>
 </div><div class="column" style="width:60%;">
 <p><img data-src="images/power_spherical.png"></p>
 </div>
@@ -457,6 +457,16 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 <aside><div>
 <p>Source: <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span></p>
 </div></aside></section>
+<section id="loss-function" class="slide level2">
+<h2>Loss function</h2>
+<p><span class="math display">\[\begin{aligned}
+L = L_{recon} + \lambda \cdot L_{KL}
+\end{aligned}\]</span></p>
+<p><span class="math inline">\(L_{recon}\)</span>: Reconstruction loss by pixel-wise euclidean distance</p>
+<p><span class="math inline">\(L_{KL}\)</span>: Kullback-Leibler divergence (measure of distribution differs from a reference distribution)</p>
+<p>Euclidean space: Gaussian reference distribution</p>
+<p>Hyper-spherical space: Uniform reference distribution</p>
+</section>
 <section id="development-environment" class="slide level2">
 <h2>Development Environment</h2>
 <ul>
@@ -554,6 +564,7 @@ poetry shell</code></pre>
 <h2>Visualization with Aladin(-Lite)</h2>
 <p>HiPS - Hierarchical Progressive Survey</p>
 <p><img data-src="images/HEALPix.png" width="900"></p>
+<p>The HiPS tilings are visualized with Aladin Lite. The HiPS tile center is</p>
 
 <aside><div>
 <p>Source: <span class="citation" data-cites="Fernique_2015">(<a href="#/references" role="doc-biblioref" onclick="">Fernique et al. 2015</a>)</span></p>
@@ -568,7 +579,7 @@ poetry shell</code></pre>
 <h2>Summary and Outlook</h2>
 <ul>
 <li>Prototyp public available <a href="https://space.h-its.org">space.h-its.org</a></li>
-<li>Evaluation of Encoder, Decoder, Loss function to improve</li>
+<li>Evaluation of encoder, decoder, loss function for better reconstruction</li>
 <li>Orchestration of the ML and HiPSter workflow</li>
 <li>Learning of 3D point clouds instead of 2D images</li>
 <li>Conversion of the trained model into <a href="">ONNX standard</a></li>

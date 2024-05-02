@@ -31,17 +31,13 @@ format:
 - Summary and Outlook
 
 
-## Spherinator: Euclidean vs (Hyper-)spherical
+## Spherinator: (Hyper-)spherical VAE
 
-Euclidean latent spaces -> Gaussian reference distribution
-
-Hyperspherical latent spaces [@DeCao2020] -> Uniform reference distribution
-
-Kullback-Leibler divergence (KL)
-
-$$\begin{aligned}
-L = L_{recon} + \lambda \cdot L_{KL}
-\end{aligned}$$
+- Representation learning by **dimensionality reduction**
+- **Convolutional Variational Autoencoder** (VAE)
+![](images/vae.png){.center}
+- **Rotational invariance** by using set of rotated images, where only the one with the lowest reconstruction loss is used for the training
+- **(Hyper-)spherical** latent space
 
 
 ## Power Spherical Distribution
@@ -54,13 +50,13 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 :::: {.columns}
 
 ::: {.column width="40%"}
-$d$: dimension
+$d$: Dimension
 
-$\mu$: direction
+$\mu$: Direction
 
-$\kappa$: concentration
+$\kappa$: Concentration
 
-$N_{X}$: normalization factor
+$N_{X}$: Normalization factor
 :::
 
 ::: {.column width="60%"}
@@ -72,6 +68,23 @@ $N_{X}$: normalization factor
 ::: aside
 Source: [@DeCao2020]
 :::
+
+
+## Loss function
+
+$$\begin{aligned}
+L = L_{recon} + \lambda \cdot L_{KL}
+\end{aligned}$$
+
+$L_{recon}$: Reconstruction loss by pixel-wise euclidean distance 
+
+$L_{KL}$: Kullback-Leibler divergence (measure of distribution differs from a reference distribution)
+
+$\lambda$: Balancing factor
+
+Euclidean space: Gaussian reference distribution
+
+Hyper-spherical space: Uniform reference distribution
 
 
 ## Development Environment
@@ -94,7 +107,6 @@ Source: [@DeCao2020]
 - Model registry (publish for production)
 - Hyperparameter optimization
 - Free for academic research
-
 
 
 ## PyTorch Lightning
@@ -128,6 +140,9 @@ HiPS - Hierarchical Progressive Survey
 
 ![](images/HEALPix.png){width="900"}
 
+The HiPS tilings are visualized with Aladin Lite.
+The HiPS tile center is 
+
 ::: aside
 Source: [@Fernique_2015]
 :::
@@ -142,7 +157,7 @@ Source: [@Fernique_2015]
 ## Summary and Outlook
 
 - Prototyp public available [space.h-its.org](https://space.h-its.org)
-- Evaluation of Encoder, Decoder, Loss function to improve 
+- Evaluation of encoder, decoder, loss function for better reconstruction 
 - Orchestration of the ML and HiPSter workflow
 - Learning of 3D point clouds instead of 2D images
 - Conversion of the trained model into [ONNX standard]()
