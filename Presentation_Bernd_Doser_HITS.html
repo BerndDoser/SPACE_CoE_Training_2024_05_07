@@ -420,17 +420,18 @@
 <h2>Outline</h2>
 <ul>
 <li>Spherinator: The Model</li>
-<li>Spherinator: Model training
+<li>Spherinator: The Model Training
 <ul>
-<li>Development environment</li>
-<li>Lightning CLI</li>
+<li>Development Environment</li>
+<li>PyTorch Lightning CLI</li>
 </ul></li>
 <li>HiPSter: The Inference</li>
+<li>Visualization with Aladin-Lite</li>
 <li>Summary and Outlook</li>
 </ul>
 </section>
-<section id="spherinator-hyper-spherical-vae" class="slide level2">
-<h2>Spherinator: (Hyper-)spherical VAE</h2>
+<section id="spherinator-the-model" class="slide level2">
+<h2>Spherinator: The Model</h2>
 <ul>
 <li>Representation learning by <strong>dimensionality reduction</strong></li>
 <li><strong>Convolutional Variational Autoencoder</strong> (VAE) <img data-src="images/vae.png" class="center"></li>
@@ -464,23 +465,24 @@ L = L_{recon} + \lambda \cdot L_{KL}
 \end{aligned}\]</span></p>
 <p><span class="math inline">\(L_{recon}\)</span>: Reconstruction loss by pixel-wise euclidean distance</p>
 <p><span class="math inline">\(L_{KL}\)</span>: Kullback-Leibler divergence (measure of distribution differs from a reference distribution)</p>
+<p><span class="math inline">\(\lambda\)</span>: Balancing factor</p>
 <p>Euclidean space: Gaussian reference distribution</p>
 <p>Hyper-spherical space: Uniform reference distribution</p>
 </section>
 <section id="development-environment" class="slide level2">
 <h2>Development Environment</h2>
 <ul>
-<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a></li>
 <li>Python dependency management with <a href="">Poetry</a></li>
-<li>Automated dependency updates with <a href="">Dependabot</a>
+<li>Automated dependency updates with <a href="">Dependabot</a></li>
+<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a>
 <ul>
-<li>Pull request (PR) for each update</li>
+<li>Pull requests for each update</li>
 </ul></li>
 <li>Continuous integration with <a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Action</a>
 <ul>
 <li>Static code analysis</li>
 <li>Unit tests</li>
-<li>PR: Check before merge</li>
+<li>Pull requests: Check before merge</li>
 </ul></li>
 </ul>
 </section>
@@ -489,7 +491,7 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <ul>
 <li>Tracking experiments <img data-src="images/wandb_illustris_loss.png"></li>
 <li>Collaborative project management (teams, reports)</li>
-<li>Model registry (publish for production)</li>
+<li>Model registry (publish models for staging and production)</li>
 <li>Hyperparameter optimization</li>
 <li>Free for academic research</li>
 </ul>
@@ -580,9 +582,13 @@ poetry shell</code></pre>
 <ul>
 <li>Prototyp public available <a href="https://space.h-its.org">space.h-its.org</a></li>
 <li>Evaluation of encoder, decoder, loss function for better reconstruction</li>
-<li>Orchestration of the ML and HiPSter workflow</li>
-<li>Learning of 3D point clouds instead of 2D images</li>
-<li>Conversion of the trained model into <a href="">ONNX standard</a></li>
+<li>Orchestration of the ML and HiPSter workflow
+<ul>
+<li><a href="">Flyte</a></li>
+<li><a href="">StreamFlow</a></li>
+</ul></li>
+<li><strong>Geometric Deep Learning</strong>: 3D point clouds instead of images</li>
+<li><a href="https://onnx.ai/">ONNX</a>: Open Standard for machine learning interoperability</li>
 </ul>
 </section>
 <section id="acknowledgement-disclaimer" class="slide level2" data-background-image="images/SPACE_acknowledgement_background.png">

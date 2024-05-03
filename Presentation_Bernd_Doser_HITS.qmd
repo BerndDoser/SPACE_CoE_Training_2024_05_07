@@ -24,14 +24,15 @@ format:
 ## Outline {background-image="images/aladin-lite-background.png"}
 
 - Spherinator: The Model
-- Spherinator: Model training
-  - Development environment
-  - Lightning CLI
+- Spherinator: The Model Training
+  - Development Environment
+  - PyTorch Lightning CLI
 - HiPSter: The Inference
+- Visualization with Aladin-Lite
 - Summary and Outlook
 
 
-## Spherinator: (Hyper-)spherical VAE
+## Spherinator: The Model
 
 - Representation learning by **dimensionality reduction**
 - **Convolutional Variational Autoencoder** (VAE)
@@ -89,14 +90,14 @@ Hyper-spherical space: Uniform reference distribution
 
 ## Development Environment
 
-- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
 - Python dependency management with [Poetry]()
 - Automated dependency updates with [Dependabot]()
-  - Pull request (PR) for each update
+- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
+  - Pull requests for each update
 - Continuous integration with [GitHub Action](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml)
   - Static code analysis
   - Unit tests
-  - PR: Check before merge
+  - Pull requests: Check before merge
 
 
 ## Weights&Biases: AI Developer Platform
@@ -104,7 +105,7 @@ Hyper-spherical space: Uniform reference distribution
 - Tracking experiments
 ![](images/wandb_illustris_loss.png)
 - Collaborative project management (teams, reports) 
-- Model registry (publish for production)
+- Model registry (publish models for staging and production)
 - Hyperparameter optimization
 - Free for academic research
 
@@ -159,8 +160,10 @@ Source: [@Fernique_2015]
 - Prototyp public available [space.h-its.org](https://space.h-its.org)
 - Evaluation of encoder, decoder, loss function for better reconstruction 
 - Orchestration of the ML and HiPSter workflow
-- Learning of 3D point clouds instead of 2D images
-- Conversion of the trained model into [ONNX standard]()
+  - [Flyte]()
+  - [StreamFlow]()
+- **Geometric Deep Learning**: 3D point clouds instead of images
+- [ONNX](https://onnx.ai/): Open Standard for machine learning interoperability
 
 
 ## Acknowledgement & Disclaimer {background-image="images/SPACE_acknowledgement_background.png"}
