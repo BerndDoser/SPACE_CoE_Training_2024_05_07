@@ -17,7 +17,14 @@ Then, I will introduce the Spherinator model and explain its training process.
 Afterward, the trained model is used in the so-called HiPSter workflow to construct inferences to display the modeled galaxies and dataset projections.
 
 
+## FAIR principles
+
+Let me start with 
+
+
 ## Development environment
+
+Poetry offers a convenient method for managing dependencies.
 
 
 ## The model
@@ -79,13 +86,30 @@ Here, it is also possible to add loggers like Weights&Biases, Callbacks, Profile
 
 ## Monitoring the training
 
+The AI platform Weights&Biases is a comfortable way to track the training experiments. The data can be shared with the research team.
+
+The trained models can be organized and version controlled in the model registry, from where they can be used for fine-tuning, staging, or production.
+
+So, searching for and copying the correct model is no longer needed.
+
+Weights&Biases provides also a hyperparameter optimization, and it's free for academic research.
+
 
 ## HiPSter: The Inference
+
+As the next step, we would like to visualize the generated images from the latent space with the trained model.
+
+Here, the hierarchical progressive survey, the HiPS format, opens an ideal way to visualize the spherical manifold hierarchically, where we can zoom into the latent space and get more generated images in this region.
+
+With the HiPS file structure, we can use the excellent program Aladin-Lite for the final visualization. 
 
 
 ## HiPSter: The Workflow
 
 
+
 ## Summary and Outlook
+
+We have seen that Spherinator and HiPSter provide a promising solution for classifying large datasets.
 
 

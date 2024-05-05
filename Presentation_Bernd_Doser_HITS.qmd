@@ -167,10 +167,10 @@ Source: [@Fernique_2015]
 
 ## Summary and Outlook
 
+- Spherinator & HiPSter promising solution for classifying large datasets
+- Easy feature extension due to **modern software development techniques**
 - Evaluation of encoder, decoder, loss function for better reconstruction 
-- Orchestration of the ML and HiPSter workflow
-  - [Flyte]()
-  - [StreamFlow]()
+- **Orchestration** of the HiPSter workflow
 - **Geometric Deep Learning**: 3D point clouds instead of images
 - [ONNX](https://onnx.ai/): Open Standard for machine learning interoperability
 - Prototyp public available [space.h-its.org](https://space.h-its.org)
