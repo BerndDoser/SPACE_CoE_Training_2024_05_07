@@ -419,15 +419,38 @@
 <section id="outline" class="slide level2" data-background-image="images/aladin-lite-background.png">
 <h2>Outline</h2>
 <ul>
-<li>Spherinator: The Model</li>
-<li>Spherinator: The Model Training
-<ul>
 <li>Development Environment</li>
-<li>PyTorch Lightning CLI</li>
-</ul></li>
-<li>HiPSter: The Inference</li>
+<li>Spherinator: The Model</li>
+<li>Spherinator: The Model Training</li>
+<li>HiPSter: The Inference Workflow</li>
 <li>Visualization with Aladin-Lite</li>
 <li>Summary and Outlook</li>
+</ul>
+</section>
+<section id="fair-principle" class="slide level2">
+<h2>FAIR principle</h2>
+<ul>
+<li><strong>F</strong>indability</li>
+<li><strong>A</strong>ccessibility</li>
+<li><strong>I</strong>nteroperability</li>
+<li><strong>R</strong>eusability</li>
+</ul>
+</section>
+<section id="development-environment" class="slide level2">
+<h2>Development Environment</h2>
+<ul>
+<li>Python dependency management with <a href="">Poetry</a></li>
+<li>Automated dependency updates with <a href="">Dependabot</a></li>
+<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a>
+<ul>
+<li>Pull requests for each update</li>
+</ul></li>
+<li>Continuous integration with <a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Action</a>
+<ul>
+<li>Static code analysis</li>
+<li>Unit tests</li>
+<li>Pull requests: Check before merge</li>
+</ul></li>
 </ul>
 </section>
 <section id="spherinator-the-model" class="slide level2">
@@ -468,33 +491,6 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <p><span class="math inline">\(\lambda\)</span>: Balancing factor</p>
 <p>Euclidean space: Gaussian reference distribution</p>
 <p>Hyper-spherical space: Uniform reference distribution</p>
-</section>
-<section id="development-environment" class="slide level2">
-<h2>Development Environment</h2>
-<ul>
-<li>Python dependency management with <a href="">Poetry</a></li>
-<li>Automated dependency updates with <a href="">Dependabot</a></li>
-<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a>
-<ul>
-<li>Pull requests for each update</li>
-</ul></li>
-<li>Continuous integration with <a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Action</a>
-<ul>
-<li>Static code analysis</li>
-<li>Unit tests</li>
-<li>Pull requests: Check before merge</li>
-</ul></li>
-</ul>
-</section>
-<section id="weightsbiases-ai-developer-platform" class="slide level2">
-<h2>Weights&amp;Biases: AI Developer Platform</h2>
-<ul>
-<li>Tracking experiments <img data-src="images/wandb_illustris_loss.png"></li>
-<li>Collaborative project management (teams, reports)</li>
-<li>Model registry (publish models for staging and production)</li>
-<li>Hyperparameter optimization</li>
-<li>Free for academic research</li>
-</ul>
 </section>
 <section id="pytorch-lightning" class="slide level2">
 <h2>PyTorch Lightning</h2>
@@ -546,21 +542,15 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <span id="cb1-45"><a href=""></a><span class="at">  </span><span class="fu">devices</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
 <span id="cb1-46"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="spherinator-step-by-step" class="slide level2">
-<h2>Spherinator: Step by Step</h2>
+<section id="weightsbiases-ai-developer-platform" class="slide level2">
+<h2>Weights&amp;Biases: AI Developer Platform</h2>
 <ul>
-<li>Clone repository</li>
+<li>Tracking experiments <img data-src="images/wandb_illustris_loss.png"></li>
+<li>Collaborative project management (teams, reports)</li>
+<li>Model registry (publish models for staging and production)</li>
+<li>Hyperparameter optimization</li>
+<li>Free for academic research</li>
 </ul>
-<pre><code>git clone https://github.com/HITS-AIN/Spherinator.git [--branch v0.2]</code></pre>
-<ul>
-<li>Install all dependencies and change into virtual environment</li>
-</ul>
-<pre><code>poetry install
-poetry shell</code></pre>
-<ul>
-<li>Start training with</li>
-</ul>
-<pre><code>spherinator.py fit -c config.yaml</code></pre>
 </section>
 <section id="visualization-with-aladin-lite" class="slide level2 nostretch">
 <h2>Visualization with Aladin(-Lite)</h2>

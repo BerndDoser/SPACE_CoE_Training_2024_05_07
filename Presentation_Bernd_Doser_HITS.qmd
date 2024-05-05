@@ -23,13 +23,32 @@ format:
 
 ## Outline {background-image="images/aladin-lite-background.png"}
 
+- Development Environment
 - Spherinator: The Model
 - Spherinator: The Model Training
-  - Development Environment
-  - PyTorch Lightning CLI
-- HiPSter: The Inference
+- HiPSter: The Inference Workflow
 - Visualization with Aladin-Lite
 - Summary and Outlook
+
+
+## FAIR principle
+
+- **F**indability
+- **A**ccessibility
+- **I**nteroperability
+- **R**eusability
+
+
+## Development Environment
+
+- Python dependency management with [Poetry]()
+- Automated dependency updates with [Dependabot]()
+- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
+  - Pull requests for each update
+- Continuous integration with [GitHub Action](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml)
+  - Static code analysis
+  - Unit tests
+  - Pull requests: Check before merge
 
 
 ## Spherinator: The Model
@@ -88,16 +107,13 @@ Euclidean space: Gaussian reference distribution
 Hyper-spherical space: Uniform reference distribution
 
 
-## Development Environment
+## PyTorch Lightning
 
-- Python dependency management with [Poetry]()
-- Automated dependency updates with [Dependabot]()
-- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
-  - Pull requests for each update
-- Continuous integration with [GitHub Action](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml)
-  - Static code analysis
-  - Unit tests
-  - Pull requests: Check before merge
+Experiments defined in yaml file:
+
+```yaml
+{{< include _illustris_power_simplified.yaml >}}
+```
 
 
 ## Weights&Biases: AI Developer Platform
@@ -109,31 +125,6 @@ Hyper-spherical space: Uniform reference distribution
 - Hyperparameter optimization
 - Free for academic research
 
-
-## PyTorch Lightning
-
-Experiments defined in yaml file:
-
-```yaml
-{{< include _illustris_power_simplified.yaml >}}
-```
-
-
-## Spherinator: Step by Step
-
-- Clone repository
-```
-git clone https://github.com/HITS-AIN/Spherinator.git [--branch v0.2]
-```
-- Install all dependencies and change into virtual environment
-```
-poetry install
-poetry shell
-```
-- Start training with 
-```
-spherinator.py fit -c config.yaml
-```
 
 ## Visualization with Aladin(-Lite) {.nostretch}
 
