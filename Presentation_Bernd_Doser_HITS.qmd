@@ -31,12 +31,23 @@ format:
 - Summary and Outlook
 
 
-## FAIR principle
+## FAIR Principles for Research Software
 
-- **F**indability
-- **A**ccessibility
-- **I**nteroperability
-- **R**eusability
+- **Findability**
+
+  Software, and its metadata, is easy for both humans and machines to find.
+
+- **Accessibility**
+
+  Software, and its metadata, is retrievable via standardised protocols.
+
+- **Interoperability**
+
+  Software interoperates with other software through standards.
+
+- **Reusability**
+
+  Software is usable and reusable.
 
 ::: aside
 Source: [@Barker2022]
@@ -59,9 +70,13 @@ Source: [@Barker2022]
 
 - Representation learning by **dimensionality reduction**
 - **Convolutional Variational Autoencoder** (VAE)
-![](images/vae.png){.center}
+![](images/vae.png){width="600"}
 - **Rotational invariance** by using set of rotated images, where only the one with the lowest reconstruction loss is used for the training
 - **(Hyper-)spherical** latent space
+
+::: aside
+Source: [@Polsterer2024]
+:::
 
 
 ## Power Spherical Distribution
