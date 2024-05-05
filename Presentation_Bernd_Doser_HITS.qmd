@@ -25,9 +25,9 @@ format:
 
 - Development Environment
 - Spherinator: The Model
-- Spherinator: The Model Training
-- HiPSter: The Inference Workflow
-- Visualization with Aladin-Lite
+- Spherinator: The Training
+- HiPSter: The Inference
+- HiPSter: The Workflow
 - Summary and Outlook
 
 
@@ -109,7 +109,7 @@ Source: [@DeCao2020]
 :::
 
 
-## Loss function
+## Spherinator: Loss Function
 
 $$\begin{aligned}
 L = L_{recon} + \lambda \cdot L_{KL}
@@ -117,25 +117,24 @@ L = L_{recon} + \lambda \cdot L_{KL}
 
 $L_{recon}$: Reconstruction loss by pixel-wise euclidean distance 
 
-$L_{KL}$: Kullback-Leibler divergence (measure of distribution differs from a reference distribution)
+$L_{KL}$: Kullback-Leibler divergence
+
+- Euclidean space: Gaussian reference distribution
+- Hyper-spherical space: Uniform reference distribution
 
 $\lambda$: Balancing factor
 
-Euclidean space: Gaussian reference distribution
 
-Hyper-spherical space: Uniform reference distribution
+## Spherinator: The Training
 
-
-## PyTorch Lightning
-
-Experiments defined in yaml file:
+PyTorch Lightning Command Line Interface (CLI):
 
 ```yaml
 {{< include _illustris_power_simplified.yaml >}}
 ```
 
 
-## Weights&Biases: AI Developer Platform
+## Monitoring with Weights&Biases
 
 - Tracking experiments
 ![](images/wandb_illustris_loss.png)
@@ -145,21 +144,22 @@ Experiments defined in yaml file:
 - Free for academic research
 
 
-## Visualization with Aladin(-Lite) {.nostretch}
+## HiPSter: The Inference
 
 HiPS - Hierarchical Progressive Survey
 
-![](images/HEALPix.png){width="900"}
+![](images/HEALPix.png){width="700"}
 
-The HiPS tilings are visualized with Aladin Lite.
-The HiPS tile center is 
+- The HiPS tiles are reconstructed with the corresponding spherical latent space position.
+
+- The HiPS tilings are visualized with Aladin Lite.
 
 ::: aside
 Source: [@Fernique_2015]
 :::
 
 
-## HiPSter Workflow {.nostretch}
+## HiPSter: The Workflow
 
 - Python workflow for inference
 ![](images/HiPSter.drawio.svg){.absolute left=0 width=1800}

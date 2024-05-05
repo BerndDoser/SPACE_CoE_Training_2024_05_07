@@ -421,9 +421,9 @@
 <ul>
 <li>Development Environment</li>
 <li>Spherinator: The Model</li>
-<li>Spherinator: The Model Training</li>
-<li>HiPSter: The Inference Workflow</li>
-<li>Visualization with Aladin-Lite</li>
+<li>Spherinator: The Training</li>
+<li>HiPSter: The Inference</li>
+<li>HiPSter: The Workflow</li>
 <li>Summary and Outlook</li>
 </ul>
 </section>
@@ -470,7 +470,7 @@
 </ul>
 
 <aside><div>
-<p>Source: <span class="citation" data-cites="Polsterer2024">(<a href="#/references" role="doc-biblioref" onclick="">Polsterer et al. 2024</a>)</span></p>
+<p>Source: <span class="citation" data-cites="Polsterer2024">(<a href="#/references" role="doc-biblioref" onclick="">Polsterer et al. 2024, in press</a>)</span></p>
 </div></aside></section>
 <section id="power-spherical-distribution" class="slide level2">
 <h2>Power Spherical Distribution</h2>
@@ -491,20 +491,22 @@ p_{X}(x; \mu, \kappa) = N_{X}(\kappa, d)^{-1}(1 + \mu^{\top}x)^{\kappa}
 <aside><div>
 <p>Source: <span class="citation" data-cites="DeCao2020">(<a href="#/references" role="doc-biblioref" onclick="">Cao and Aziz 2020</a>)</span></p>
 </div></aside></section>
-<section id="loss-function" class="slide level2">
-<h2>Loss function</h2>
+<section id="spherinator-loss-function" class="slide level2">
+<h2>Spherinator: Loss Function</h2>
 <p><span class="math display">\[\begin{aligned}
 L = L_{recon} + \lambda \cdot L_{KL}
 \end{aligned}\]</span></p>
 <p><span class="math inline">\(L_{recon}\)</span>: Reconstruction loss by pixel-wise euclidean distance</p>
-<p><span class="math inline">\(L_{KL}\)</span>: Kullback-Leibler divergence (measure of distribution differs from a reference distribution)</p>
+<p><span class="math inline">\(L_{KL}\)</span>: Kullback-Leibler divergence</p>
+<ul>
+<li>Euclidean space: Gaussian reference distribution</li>
+<li>Hyper-spherical space: Uniform reference distribution</li>
+</ul>
 <p><span class="math inline">\(\lambda\)</span>: Balancing factor</p>
-<p>Euclidean space: Gaussian reference distribution</p>
-<p>Hyper-spherical space: Uniform reference distribution</p>
 </section>
-<section id="pytorch-lightning" class="slide level2">
-<h2>PyTorch Lightning</h2>
-<p>Experiments defined in yaml file:</p>
+<section id="spherinator-the-training" class="slide level2">
+<h2>Spherinator: The Training</h2>
+<p>PyTorch Lightning Command Line Interface (CLI):</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href=""></a><span class="fu">seed_everything</span><span class="kw">:</span><span class="at"> </span><span class="dv">42</span></span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a><span class="fu">model</span><span class="kw">:</span></span>
@@ -552,8 +554,8 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <span id="cb1-45"><a href=""></a><span class="at">  </span><span class="fu">devices</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
 <span id="cb1-46"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="weightsbiases-ai-developer-platform" class="slide level2">
-<h2>Weights&amp;Biases: AI Developer Platform</h2>
+<section id="monitoring-with-weightsbiases" class="slide level2">
+<h2>Monitoring with Weights&amp;Biases</h2>
 <ul>
 <li>Tracking experiments <img data-src="images/wandb_illustris_loss.png"></li>
 <li>Collaborative project management (teams, reports)</li>
@@ -562,17 +564,20 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <li>Free for academic research</li>
 </ul>
 </section>
-<section id="visualization-with-aladin-lite" class="slide level2 nostretch">
-<h2>Visualization with Aladin(-Lite)</h2>
+<section id="hipster-the-inference" class="slide level2">
+<h2>HiPSter: The Inference</h2>
 <p>HiPS - Hierarchical Progressive Survey</p>
-<p><img data-src="images/HEALPix.png" width="900"></p>
-<p>The HiPS tilings are visualized with Aladin Lite. The HiPS tile center is</p>
+<p><img data-src="images/HEALPix.png" width="700"></p>
+<ul>
+<li><p>The HiPS tiles are reconstructed with the corresponding spherical latent space position.</p></li>
+<li><p>The HiPS tilings are visualized with Aladin Lite.</p></li>
+</ul>
 
 <aside><div>
 <p>Source: <span class="citation" data-cites="Fernique_2015">(<a href="#/references" role="doc-biblioref" onclick="">Fernique et al. 2015</a>)</span></p>
 </div></aside></section>
-<section id="hipster-workflow" class="slide level2 nostretch">
-<h2>HiPSter Workflow</h2>
+<section id="hipster-the-workflow" class="slide level2">
+<h2>HiPSter: The Workflow</h2>
 <ul>
 <li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg" class="absolute" style="left: 0px; width: 1800px; "></li>
 </ul>
@@ -613,7 +618,7 @@ Cao, Nicola De, and Wilker Aziz. 2020. <span>“The Power Spherical Distribution
 Fernique, P., M. G. Allen, T. Boch, A. Oberto, F-X. Pineau, D. Durand, C. Bot, et al. 2015. <span>“Hierarchical Progressive Surveys: Multi-Resolution HEALPix Data Structures for Astronomical Images, Catalogues, and 3-Dimensional Data Cubes.”</span> <em>Astronomy &amp;Amp; Astrophysics</em> 578 (June): A114. <a href="https://doi.org/10.1051/0004-6361/201526075">https://doi.org/10.1051/0004-6361/201526075</a>.
 </div>
 <div id="ref-Polsterer2024" class="csl-entry" role="listitem">
-Polsterer, Kai L., Bernd Doser, Andreas Fehlner, and Sebastian Trujillo-Gomez. 2024. <span>“Spherinator and HiPSter: Representation Learning for Unbiased Knowledge Discovery from Simulations.”</span> <em>Astronomical Data Analysis Software and Systems XXXIII</em>.
+Polsterer, Kai L., Bernd Doser, Andreas Fehlner, and Sebastian Trujillo-Gomez. 2024, in press. <span>“Spherinator and HiPSter: Representation Learning for Unbiased Knowledge Discovery from Simulations.”</span> <em>Astronomical Data Analysis Software and Systems XXXIII</em>, 2024, in press.
 </div>
 </div>
 </section>
