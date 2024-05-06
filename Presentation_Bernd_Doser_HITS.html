@@ -419,7 +419,7 @@
 <section id="outline" class="slide level2" data-background-image="images/aladin-lite-background.png">
 <h2>Outline</h2>
 <ul>
-<li>Development Environment</li>
+<li>FAIR Development Setup</li>
 <li>Spherinator: The Model</li>
 <li>Spherinator: The Training</li>
 <li>HiPSter: The Inference</li>
@@ -443,21 +443,19 @@
 <aside><div>
 <p>Source: <span class="citation" data-cites="Barker2022">(<a href="#/references" role="doc-biblioref" onclick="">Barker et al. 2022</a>)</span></p>
 </div></aside></section>
-<section id="development-environment" class="slide level2">
-<h2>Development Environment</h2>
+<section id="fair-development-setup" class="slide level2">
+<h2>FAIR: Development Setup</h2>
 <ul>
-<li>Python dependency management with <a href="">Poetry</a></li>
-<li>Automated dependency updates with <a href="">Dependabot</a></li>
-<li>Project management at <a href="https://github.com/HITS-AIN/Spherinator">GitHub</a>
-<ul>
-<li>Pull requests for each update</li>
-</ul></li>
-<li>Continuous integration with <a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Action</a>
+<li><a href="https://github.com/HITS-AIN/Spherinator">GitHub</a>: Repository and project management</li>
+<li><a href="https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml">GitHub Actions</a>: Continuous integration
 <ul>
 <li>Static code analysis</li>
 <li>Unit tests</li>
-<li>Pull requests: Check before merge</li>
 </ul></li>
+<li><a href="https://python-poetry.org/">Poetry</a>: Python dependency management</li>
+<li><a href="https://docs.github.com/en/code-security/dependabot">Dependabot</a>: Automated security / version updates</li>
+<li><a href="https://onnx.ai/">ONNX</a>: Open Standard for machine learning interoperability</li>
+<li><a href="https://wandb.ai/">Weights&amp;Biases</a>: Visualizing and tracking machine learning experiments</li>
 </ul>
 </section>
 <section id="spherinator-the-model" class="slide level2">
@@ -578,9 +576,7 @@ L = L_{recon} + \lambda \cdot L_{KL}
 </div></aside></section>
 <section id="hipster-the-workflow" class="slide level2">
 <h2>HiPSter: The Workflow</h2>
-<ul>
-<li>Python workflow for inference <img data-src="images/HiPSter.drawio.svg" class="absolute" style="left: 0px; width: 1800px; "></li>
-</ul>
+<p><img data-src="images/HiPSter.drawio.svg" class="absolute" style="left: 0px; width: 1800px; "></p>
 </section>
 <section id="summary-and-outlook" class="slide level2">
 <h2>Summary and Outlook</h2>
@@ -590,7 +586,6 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <li>Evaluation of encoder, decoder, loss function for better reconstruction</li>
 <li><strong>Orchestration</strong> of the HiPSter workflow</li>
 <li><strong>Geometric Deep Learning</strong>: 3D point clouds instead of images</li>
-<li><a href="https://onnx.ai/">ONNX</a>: Open Standard for machine learning interoperability</li>
 <li>Prototyp public available <a href="https://space.h-its.org">space.h-its.org</a></li>
 </ul>
 </section>

@@ -23,7 +23,7 @@ format:
 
 ## Outline {background-image="images/aladin-lite-background.png"}
 
-- Development Environment
+- FAIR Development Setup
 - Spherinator: The Model
 - Spherinator: The Training
 - HiPSter: The Inference
@@ -54,16 +54,16 @@ Source: [@Barker2022]
 :::
 
 
-## Development Environment
+## FAIR: Development Setup
 
-- Python dependency management with [Poetry]()
-- Automated dependency updates with [Dependabot]()
-- Project management at [GitHub](https://github.com/HITS-AIN/Spherinator)
-  - Pull requests for each update
-- Continuous integration with [GitHub Action](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml)
+- [GitHub](https://github.com/HITS-AIN/Spherinator): Repository and project management
+- [GitHub Actions](https://github.com/HITS-AIN/Spherinator/blob/main/.github/workflows/python-package.yml): Continuous integration
   - Static code analysis
   - Unit tests
-  - Pull requests: Check before merge
+- [Poetry](https://python-poetry.org/): Python dependency management
+- [Dependabot](https://docs.github.com/en/code-security/dependabot): Automated security / version updates
+- [ONNX](https://onnx.ai/): Open Standard for machine learning interoperability
+- [Weights&Biases](https://wandb.ai/): Visualizing and tracking machine learning experiments
 
 
 ## Spherinator: The Model
@@ -161,7 +161,6 @@ Source: [@Fernique_2015]
 
 ## HiPSter: The Workflow
 
-- Python workflow for inference
 ![](images/HiPSter.drawio.svg){.absolute left=0 width=1800}
 
 
@@ -172,7 +171,6 @@ Source: [@Fernique_2015]
 - Evaluation of encoder, decoder, loss function for better reconstruction 
 - **Orchestration** of the HiPSter workflow
 - **Geometric Deep Learning**: 3D point clouds instead of images
-- [ONNX](https://onnx.ai/): Open Standard for machine learning interoperability
 - Prototyp public available [space.h-its.org](https://space.h-its.org)
 
 
