@@ -35,19 +35,19 @@ format:
 
 - **Findability**
 
-  Software, and its metadata, is easy for both humans and machines to find.
+  Software, and its metadata, is easy to find for humans and machines
 
 - **Accessibility**
 
-  Software, and its metadata, is retrievable via standardised protocols.
+  Software, and its metadata, is retrievable via standardized protocols
 
 - **Interoperability**
 
-  Software interoperates with other software through standards.
+  Software interoperates with other software through standards
 
 - **Reusability**
 
-  Software is usable and reusable.
+  Software is usable and reusable
 
 ::: aside
 Source: [@Barker2022]
@@ -152,7 +152,7 @@ HiPS - Hierarchical Progressive Survey
 
 - The HiPS tiles are reconstructed with the corresponding spherical latent space position.
 
-- The HiPS tilings are visualized with Aladin Lite.
+- The HiPS tilings are visualized with [Aladin-Lite](https://github.com/cds-astro/aladin-lite).
 
 ::: aside
 Source: [@Fernique_2015]

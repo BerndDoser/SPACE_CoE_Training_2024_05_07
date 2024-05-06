@@ -36,7 +36,7 @@ The models will be converted into the ONNX open source standard, enabling intero
 
 We use Weights & Biases to track and orchestrate the training process.
 
-This development setup complies with the FAIR principles, providing stability while allowing for necessary flexibility to make steady improvements.
+This development setup complies with the FAIR principles, providing stability while allowing for the necessary flexibility to make steady improvements.
 
 
 ## The model
@@ -113,16 +113,32 @@ As the next step, we would like to visualize the generated images from the laten
 
 Here, the hierarchical progressive survey, the HiPS format, opens an ideal way to visualize the spherical manifold hierarchically, where we can zoom into the latent space and get more generated images in this region.
 
-With the HiPS file structure, we can use the excellent program Aladin-Lite for the final visualization. 
+With the HiPS file structure, we can use the program Aladin-Lite for the final visualization. 
 
 
 ## HiPSter: The Workflow
 
+Here, the individual tasks of the HiPSter workflow are listed.
 
+To generate the HiPS tiles, the decoder is called for all hierarchical points of the spherical latent space.
+
+The encoder part of the model generates the catalog file, which contains the location in the latent space for a given input dataset.
+
+In addition, other images and tables need to be created to provide the necessary information for Aladin-Lite.
 
 
 ## Summary and Outlook
 
 We have seen that Spherinator and HiPSter provide a promising solution for classifying large datasets.
 
+We can achieve a stable code base by using modern software development techniques and respecting the FAIR principles while continuously improving our project.
 
+We are evaluating new encoder and decoder models and loss functions to improve data reconstruction and reflect more image details.
+
+Additionally, we are assessing appropriate workflow frameworks to establish and expand our HiPSter workflow.
+
+Geometric deep learning would provide a direct way to train 3D structures with rotational invariance.
+
+As mentioned by Sebastian, you can find the prototype and the source code on Github.
+
+Thank you for your attention.
