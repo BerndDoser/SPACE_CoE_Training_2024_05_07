@@ -19,12 +19,24 @@ Afterward, the trained model is used in the so-called HiPSter workflow to constr
 
 ## FAIR principles
 
-Let me start with 
+Allow me to begin by making a general statement about the FAIR principles in research software.
+
+Our goal is to adhere to these principles as closely as possible.
+
+These principles state that the software should be easily findable and accessible, interact with other software through open standards, and be simple to use and modify.
 
 
 ## Development environment
 
-Poetry offers a convenient method for managing dependencies.
+We have established a development environment using GitHub that covers the entire software lifecycle, from feature design to deployment, with GitHub Actions providing continuous integration.
+
+For dependency management, we use Poetry, and Dependabot is used to automate version updates.
+
+The models will be converted into the ONNX open source standard, enabling interoperability among ML frameworks and programming languages.
+
+We use Weights & Biases to track and orchestrate the training process.
+
+This development setup complies with the FAIR principles, providing stability while allowing for necessary flexibility to make steady improvements.
 
 
 ## The model
@@ -88,7 +100,7 @@ Here, it is also possible to add loggers like Weights&Biases, Callbacks, Profile
 
 The AI platform Weights&Biases is a comfortable way to track the training experiments. The data can be shared with the research team.
 
-The trained models can be organized and version controlled in the model registry, from where they can be used for fine-tuning, staging, or production.
+The trained models can be organized and version-controlled in the model registry, from where they can be used for fine-tuning, staging, or production.
 
 So, searching for and copying the correct model is no longer needed.
 
@@ -105,6 +117,7 @@ With the HiPS file structure, we can use the excellent program Aladin-Lite for t
 
 
 ## HiPSter: The Workflow
+
 
 
 
