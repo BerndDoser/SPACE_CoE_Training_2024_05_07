@@ -171,7 +171,7 @@ Source: [@Fernique_2015]
 - Evaluation of encoder, decoder, loss function for better reconstruction 
 - **Orchestration** of the HiPSter workflow
 - **Geometric Deep Learning**: 3D point clouds instead of images
-- Prototyp public available [space.h-its.org](https://space.h-its.org)
+- [Prototype](https://space.h-its.org) and [source code](https://github.com/HITS-AIN/Spherinator) are publicly available 
 
 
 ## Acknowledgement & Disclaimer {background-image="images/SPACE_acknowledgement_background.png"}

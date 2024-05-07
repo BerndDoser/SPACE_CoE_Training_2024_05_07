@@ -188,4 +188,10 @@ We are going to test Geometric deep learning, that would provide a direct way to
 
 Finally, as mentioned by Sebastian, you can find the prototype and the source code on Github.
 
+
+If you have any questions, please don't hesitate to contact us.
+
+Sebastian can assist with scientific inquiries
+and I can help with technical or general inquiries regarding modern software development and machine learning.
+
 Thank you for your attention.
