@@ -462,7 +462,7 @@
 <h2>Spherinator: The Model</h2>
 <ul>
 <li>Representation learning by <strong>dimensionality reduction</strong></li>
-<li><strong>Convolutional Variational Autoencoder</strong> (VAE) <img data-src="images/vae.png" width="600"></li>
+<li><strong>Convolutional Variational Autoencoder</strong> (VAE) <img data-src="images/vae.svg" width="600"></li>
 <li><strong>Rotational invariance</strong> by using set of rotated images, where only the one with the lowest reconstruction loss is used for the training</li>
 <li><strong>(Hyper-)spherical</strong> latent space</li>
 </ul>
@@ -550,7 +550,28 @@ L = L_{recon} + \lambda \cdot L_{KL}
 <span id="cb1-43"><a href=""></a><span class="at">  </span><span class="fu">max_epochs</span><span class="kw">:</span><span class="at"> </span><span class="dv">200</span></span>
 <span id="cb1-44"><a href=""></a><span class="at">  </span><span class="fu">accelerator</span><span class="kw">:</span><span class="at"> gpu</span></span>
 <span id="cb1-45"><a href=""></a><span class="at">  </span><span class="fu">devices</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
-<span id="cb1-46"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-46"><a href=""></a><span class="at">  </span><span class="fu">precision</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span>
+<span id="cb1-47"><a href=""></a></span>
+<span id="cb1-48"><a href=""></a><span class="at">  </span><span class="fu">logger</span><span class="kw">:</span></span>
+<span id="cb1-49"><a href=""></a><span class="at">    </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> lightning.pytorch.loggers.WandbLogger</span></span>
+<span id="cb1-50"><a href=""></a><span class="at">    </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-51"><a href=""></a><span class="at">      </span><span class="fu">project</span><span class="kw">:</span><span class="at"> spherinator</span></span>
+<span id="cb1-52"><a href=""></a><span class="at">      </span><span class="fu">log_model</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
+<span id="cb1-53"><a href=""></a><span class="at">      </span><span class="fu">entity</span><span class="kw">:</span><span class="at"> ain-space</span></span>
+<span id="cb1-54"><a href=""></a><span class="at">      </span><span class="fu">tags</span><span class="kw">:</span></span>
+<span id="cb1-55"><a href=""></a><span class="at">        </span><span class="kw">-</span><span class="at"> illustris</span></span>
+<span id="cb1-56"><a href=""></a></span>
+<span id="cb1-57"><a href=""></a><span class="at">  </span><span class="fu">callbacks</span><span class="kw">:</span></span>
+<span id="cb1-58"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> lightning.pytorch.callbacks.ModelCheckpoint</span></span>
+<span id="cb1-59"><a href=""></a><span class="at">      </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-60"><a href=""></a><span class="at">        </span><span class="fu">monitor</span><span class="kw">:</span><span class="at"> train_loss</span></span>
+<span id="cb1-61"><a href=""></a><span class="at">        </span><span class="fu">filename</span><span class="kw">:</span><span class="at"> </span><span class="st">"{epoch}-{train_loss:.2f}"</span></span>
+<span id="cb1-62"><a href=""></a><span class="at">        </span><span class="fu">save_top_k</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb1-63"><a href=""></a><span class="at">        </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> min</span></span>
+<span id="cb1-64"><a href=""></a><span class="at">        </span><span class="fu">every_n_epochs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb1-65"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">class_path</span><span class="kw">:</span><span class="at"> callbacks.LogReconstructionCallback</span></span>
+<span id="cb1-66"><a href=""></a><span class="at">      </span><span class="fu">init_args</span><span class="kw">:</span></span>
+<span id="cb1-67"><a href=""></a><span class="at">        </span><span class="fu">num_samples</span><span class="kw">:</span><span class="at"> </span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="monitoring-with-weightsbiases" class="slide level2">
 <h2>Monitoring with Weights&amp;Biases</h2>

@@ -70,7 +70,7 @@ Source: [@Barker2022]
 
 - Representation learning by **dimensionality reduction**
 - **Convolutional Variational Autoencoder** (VAE)
-![](images/vae.png){width="600"}
+![](images/vae.svg){width="600"}
 - **Rotational invariance** by using set of rotated images, where only the one with the lowest reconstruction loss is used for the training
 - **(Hyper-)spherical** latent space
 

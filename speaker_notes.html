@@ -48,25 +48,31 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="title-slide" class="level2">
 <h2 class="anchored" data-anchor-id="title-slide">Title slide</h2>
-<p>Thank you for allowing us to showcase our prototype in the space webinar series.</p>
-<p>Sebastian has presented the scientific background and potential applications, while I will focus more on the technical design and implementation.</p>
-<p>My scientific background is in quantum chemistry.</p>
-<p>However, I have been working for almost 20 years as a software engineer, covering topics in HPC and machine learning using C++, CUDA, Python, and many others.</p>
+<p>Thanks for handing over.</p>
+<p>And thanks again for given us the opportunity to present in the space webinar.</p>
+<p>My name is Bernd Doser, and my background is computational chemistry.</p>
+<p>However, I have worked for almost 15 years as a scientific software engineer in different fields.</p>
+<p>My focus is HPC and machine learning using C++, CUDA, Python, and many others.</p>
+<p>Sebastian has presented the scientific background and potential applications, and I will focus more on the technical design and implementation.</p>
 </section>
 <section id="outline" class="level2">
 <h2 class="anchored" data-anchor-id="outline">Outline</h2>
-<p>I will introduce our development setup, which respects the FAIR principles, and try to use the best available techniques for software lifecycle development.</p>
-<p>Then, I will introduce the Spherinator model and explain its training process.</p>
-<p>Afterward, the trained model is used in the so-called HiPSter workflow to construct inferences to display the modeled galaxies and dataset projections.</p>
+<p>First, I will say a few general words about best practice development environment setup.</p>
+<p>Then, I will introduce our Spherinator machine-learning model and explain its training process.</p>
+<p>Then, I will explain our workflow HiPSter which is used for inferences to display the modeled galaxies and dataset projections.</p>
 </section>
 <section id="fair-principles" class="level2">
 <h2 class="anchored" data-anchor-id="fair-principles">FAIR principles</h2>
-<p>Allow me to begin by making a general statement about the FAIR principles in research software.</p>
-<p>Our goal is to adhere to these principles as closely as possible.</p>
+<p>Let me start with a few words about best practice software design.</p>
+<p>With respect to the design and implementation we follow the so-called FAIR principles, that have been established in the scientific community.</p>
+<p>What are these principles, and why are they important?</p>
 <p>These principles state that the software should be easily findable and accessible, interact with other software through open standards, and be simple to use and modify.</p>
+<p>Please find a good overview in the given reference for more details.</p>
 </section>
 <section id="development-environment" class="level2">
 <h2 class="anchored" data-anchor-id="development-environment">Development environment</h2>
+<p>Before diving deeper into our model, a few words on useful frameworks and technical environments.</p>
+<p>The slides contain links to the tools.</p>
 <p>We have established a development environment using GitHub that covers the entire software lifecycle, from feature design to deployment, with GitHub Actions providing continuous integration.</p>
 <p>For dependency management, we use Poetry, and Dependabot is used to automate version updates.</p>
 <p>The models will be converted into the ONNX open source standard, enabling interoperability among ML frameworks and programming languages.</p>
@@ -75,14 +81,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-model" class="level2">
 <h2 class="anchored" data-anchor-id="the-model">The model</h2>
-<p>The Spherinator model is built on dimensionality reduction, which allows it to learn data features automatically.</p>
-<p>To achieve this, we use a generative model known as a convolutional variational autoencoder.</p>
-<p>This is an unsupervised approach that enables us to generate new data by identifying patterns in existing data.</p>
-<p>Unlike the plain autoencoder, which reconstructs images from a single point in the latent space, the VAE uses a sample from a learned distribution.</p>
-<p>As a result, the neighborhood in the latent space represents similar features. The rotational invariance is crucial for learning features from galaxy images, as they should not be dependent on image rotation.</p>
-<p>Thus, the image with the lowest reconstruction loss is selected, and only that image is used for the training step.</p>
+<p>So, what is Spherinator?</p>
 <p>The term “Spherinator” is derived from the spherical latent space manifold.</p>
-<p>It is possible to have other manifolds, but the spherical manifold is the most suitable for visualizing later.</p>
+<p>Let me now explain in more detail.</p>
+<p>The Spherinator model is a machine learning model which is built for dimensionality reduction.</p>
+<p>This allows to learn data features automatically.</p>
+<p>To achieve this, we use a generative model known as a convolutional variational autoencoder.</p>
+<p>This is an unsupervised machine-learning approach that enables us to generate new data by identifying patterns in existing data.</p>
+<p>Unlike a plain autoencoder, which reconstructs images from a single point in the latent space, the VAE uses a sample from a learned distribution.</p>
+<p>As a result, the neighborhood in the latent space represents similar features.</p>
+<p>The rotational invariance is crucial for learning features from galaxy images, as they should not be dependent on image rotation.</p>
+<p>To achieve this, the image with the lowest reconstruction loss is selected, and only that image is then used for the training step.</p>
+<p>It is possible to have other manifolds, but the spherical manifold is the most suitable for visualization.</p>
 </section>
 <section id="the-power-spherical-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="the-power-spherical-distribution">The Power spherical distribution</h2>
@@ -92,6 +102,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-loss-function" class="level2">
 <h2 class="anchored" data-anchor-id="the-loss-function">The Loss Function</h2>
+<p>The loss function is one of the most critical aspects of the model training.</p>
 <p>The loss function consists of the reconstruction loss and the Kullback-Leibler divergence.</p>
 <p>The reconstruction loss is calculated using a pixel-wise Euclidean distance.</p>
 <p>The Kullback-Leibler divergence measures the difference between the power spherical distribution function and a reference distribution function.</p>
@@ -101,40 +112,49 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-training" class="level2">
 <h2 class="anchored" data-anchor-id="the-training">The training</h2>
-<p>For the training, <strong>PyTorch Lightning</strong> is used, which decouples research from the engineering code. It is easier to read, shows better reproducibility, and can scale up using accelerated and distributed hardware.</p>
+<p>For the training, <strong>PyTorch Lightning</strong> is used, which decouples research from the engineering code.</p>
+<p>This has several advantages:</p>
+<p>It is easier to read, shows better reproducibility, and can scale up using accelerated and distributed hardware.</p>
 <p>With the command line interface of PyTorch Lightning, everything is defined in a single file. The classpath and its arguments define the model.</p>
 <p>It is also possible to use further models in the arguments, for example, for the encoder and decoder. So it’s easy to integrate existing models, for example, Resnet or Visual Transformer as encoder part.</p>
-<p>The most excellent section is the trainer part: You can switch on the GPU accelerator with a single line. With another line, you can control the number of GPUs used.</p>
+<p>One of the best features is the trainer section: You can switch on the GPU accelerator with a single line. With another line, you can control the number of GPUs used.</p>
 <p>Here, it is also possible to add loggers like Weights&amp;Biases, Callbacks, Profiler, and so on.</p>
 </section>
 <section id="monitoring-the-training" class="level2">
 <h2 class="anchored" data-anchor-id="monitoring-the-training">Monitoring the training</h2>
-<p>The AI platform Weights&amp;Biases is a comfortable way to track the training experiments. The data can be shared with the research team.</p>
+<p>Another key aspect is monitoring the training.</p>
+<p>The AI platform Weights&amp;Biases is a comfortable way to track the training experiments.</p>
+<p>In addition, the data can be shared easily with others.</p>
 <p>The trained models can be organized and version-controlled in the model registry, from where they can be used for fine-tuning, staging, or production.</p>
 <p>So, searching for and copying the correct model is no longer needed.</p>
 <p>Weights&amp;Biases provides also a hyperparameter optimization, and it’s free for academic research.</p>
 </section>
 <section id="hipster-the-inference" class="level2">
 <h2 class="anchored" data-anchor-id="hipster-the-inference">HiPSter: The Inference</h2>
-<p>As the next step, we would like to visualize the generated images from the latent space with the trained model.</p>
+<p>Hipster is a workflow, that our team has developed.</p>
+<p>Especially for our project visualization is highly important</p>
+<p>We need to visualize the generated images from the latent space with the trained model.</p>
 <p>Here, the hierarchical progressive survey, the HiPS format, opens an ideal way to visualize the spherical manifold hierarchically, where we can zoom into the latent space and get more generated images in this region.</p>
 <p>With the HiPS file structure, we can use the program Aladin-Lite for the final visualization.</p>
 </section>
 <section id="hipster-the-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="hipster-the-workflow">HiPSter: The Workflow</h2>
-<p>Here, the individual tasks of the HiPSter workflow are listed.</p>
+<p>On this slide, the HiPSter workflow and the individual tasks are schematically shown.</p>
 <p>To generate the HiPS tiles, the decoder is called for all hierarchical points of the spherical latent space.</p>
 <p>The encoder part of the model generates the catalog file, which contains the location in the latent space for a given input dataset.</p>
 <p>In addition, other images and tables need to be created to provide the necessary information for Aladin-Lite.</p>
+<p>The tool we used for visualization mentioned before.</p>
 </section>
 <section id="summary-and-outlook" class="level2">
 <h2 class="anchored" data-anchor-id="summary-and-outlook">Summary and Outlook</h2>
-<p>We have seen that Spherinator and HiPSter provide a promising solution for classifying large datasets.</p>
-<p>We can achieve a stable code base by using modern software development techniques and respecting the FAIR principles while continuously improving our project.</p>
-<p>We are evaluating new encoder and decoder models and loss functions to improve data reconstruction and reflect more image details.</p>
+<p>With that I would like to summerize.</p>
+<p>The take-home message is: Spherinator and HiPSter provide a promising solution for classifying large datasets in general.</p>
+<p>A key for establishing a stable technical framework is to obey modern software development techniques and following best practices such as the FAIR principles.</p>
+<p>This allows continuously improving our project.</p>
+<p>Currently, we are evaluating new encoder and decoder models and loss functions to further improve data reconstruction and reflect more image details.</p>
 <p>Additionally, we are assessing appropriate workflow frameworks to establish and expand our HiPSter workflow.</p>
-<p>Geometric deep learning would provide a direct way to train 3D structures with rotational invariance.</p>
-<p>As mentioned by Sebastian, you can find the prototype and the source code on Github.</p>
+<p>We are going to test Geometric deep learning, that would provide a direct way to train 3D structures with rotational invariance.</p>
+<p>Finally, as mentioned by Sebastian, you can find the prototype and the source code on Github.</p>
 <p>Thank you for your attention.</p>
 </section>
 
