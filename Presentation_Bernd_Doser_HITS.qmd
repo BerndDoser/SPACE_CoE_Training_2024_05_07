@@ -17,8 +17,6 @@ format:
     width: 1300
     template-partials:
       - title-slide.html
-  pptx:
-    reference-doc: Space_template_v04_20240216.pptx
 ---
 
 ## Outline {background-image="images/aladin-lite-background.png"}
@@ -115,7 +113,7 @@ $$\begin{aligned}
 L = L_{recon} + \lambda \cdot L_{KL}
 \end{aligned}$$
 
-$L_{recon}$: Reconstruction loss by pixel-wise euclidean distance 
+$L_{recon}$: Reconstruction loss by pixel-wise euclidean distance
 
 $L_{KL}$: Kullback-Leibler divergence
 
@@ -138,7 +136,7 @@ PyTorch Lightning Command Line Interface (CLI):
 
 - Tracking experiments
 ![](images/wandb_illustris_loss.png)
-- Collaborative project management (teams, reports) 
+- Collaborative project management (teams, reports)
 - Model registry (publish models for staging and production)
 - Hyperparameter optimization
 - Free for academic research
@@ -168,10 +166,10 @@ Source: [@Fernique_2015]
 
 - Spherinator & HiPSter promising solution for classifying large datasets
 - Easy feature extension due to **modern software development techniques**
-- Evaluation of encoder, decoder, loss function for better reconstruction 
+- Evaluation of encoder, decoder, loss function for better reconstruction
 - **Orchestration** of the HiPSter workflow
 - **Geometric Deep Learning**: 3D point clouds instead of images
-- [Prototype](https://space.h-its.org) and [source code](https://github.com/HITS-AIN/Spherinator) are publicly available 
+- [Prototype](https://space.h-its.org) and [source code](https://github.com/HITS-AIN/Spherinator) are publicly available
 
 
 ## Acknowledgement & Disclaimer {background-image="images/SPACE_acknowledgement_background.png"}
