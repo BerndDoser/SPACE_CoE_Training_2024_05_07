@@ -2,7 +2,7 @@
 
 [SPACE CoE Training](https://www.space-coe.eu/training.php)
 
-[Start Presentation](https://space_coes_spring_training_offer_2024_05_07.github.io)
+[Start Presentation](https://bernddoser.github.io/SPACE_CoE_Training_2024_05_07/)
 
 ## Machine learning prototype for SPACE applications
 
